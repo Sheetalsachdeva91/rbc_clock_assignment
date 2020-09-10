@@ -13,15 +13,6 @@ export class ClockComponent implements OnInit {
   public currentDate: Date;
   public initialTimer;
   public newSeconds;
-  public daysArray = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
   public dDate = new Date();
   public dHour: any;
   public dMinute: string;
@@ -53,7 +44,6 @@ export class ClockComponent implements OnInit {
   }
 
   updateClock(date) {
-    // console.log('date',date);
     this.secHand.nativeElement.style.transform =
       "rotate(" + date.getSeconds() * 6 + "deg)";
     this.minHand.nativeElement.style.transform =
@@ -85,7 +75,6 @@ export class ClockComponent implements OnInit {
   }
 
   onTimeChange(data) {
-    console.log("data.target.value", data);
     this.value= data.target.value;
     let timeSplit = data.target.value.split(":"),
       hours: number,
@@ -114,7 +103,6 @@ export class ClockComponent implements OnInit {
       minutes,
       seconds
     );
-    console.log("meridian", this.meridian);
 
     clearInterval(this.initialTimer);
     clearInterval(this.digitalTimer);
@@ -131,17 +119,6 @@ export class ClockComponent implements OnInit {
     const inputHours =
       (this.currentDate.getHours() < 10 ? "0" : "") +
       this.currentDate.getHours();
-
-    var inputTime = inputHours + ":" + inputMinutes;
-    (document.getElementById(
-      "dtimeInput"
-    ) as HTMLInputElement).value = inputTime;
-    (document.getElementById(
-      "timeInput"
-    ) as HTMLInputElement).value = inputTime;
-
-    var timeControl = document.querySelector('input[type="time"]');
-    //timeControl.value = '15:30';
 
     this.modifiedDate = new Date(
       new Date().getFullYear(),
